@@ -1,0 +1,55 @@
+#submit_page {
+    width: 100%;
+    height: 100vh; 
+}
+
+.submit_wrap {
+    width: 60%;
+    height: 50vh;
+    margin-top: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    border: 2px solid black;
+    padding-left: 30px;
+    padding-right: 30px;
+    border-radius: 5px;
+}
+
+.wrap_title {
+    margin: 0;
+}
+
+.field_wrap {
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.label {
+    margin-top: 12px;
+    width: 30%;
+    text-align: left;
+}
+
+.field_value {
+    margin-top: 5px;
+    text-align: left;
+    width: 70%;
+}
+
+.label_ticket {
+    margin-top: 5px;
+    width: 30%;
+    text-align: left;
+}
+
+.btn_wrap {
+    margin-top: 30px;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+
+
+
