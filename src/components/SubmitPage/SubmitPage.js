@@ -18,10 +18,10 @@ const SubmitPage = () => {
     e.preventDefault();
 
     const data = {
-      name: nameRef.current?.value,
-      contact: contactRef.current?.value,
-      email: emailRef.current?.value,
-      message: messageRef.current?.value,
+      name: nameRef.current.value,
+      contact: contactRef.current.value,
+      email: emailRef.current.value,
+      message: messageRef.current.value,
     };
 
     console.log(data);
@@ -48,7 +48,7 @@ const SubmitPage = () => {
             <span className='label'>Name:</span>
             <span className='field_value'>
               <TextField id="outlined-basic" variant="outlined"  size="small" fullWidth
-              ref={nameRef}
+              inputRef={nameRef}
               />
             </span>
           </div>
@@ -57,7 +57,7 @@ const SubmitPage = () => {
           <span className='label'>Contact #</span>
           <span className='field_value'>
             <TextField id="outlined-basic" variant="outlined" size="small" fullWidth
-            ref={contactRef}
+            inputRef={contactRef}
             />
           </span>
         </div>
@@ -66,7 +66,7 @@ const SubmitPage = () => {
           <span className='label'>Email:</span>
           <span className='field_value'>
             <TextField id="outlined-basic" variant="outlined" size="small" fullWidth
-            ref={emailRef}
+            inputRef={emailRef}
             />
           </span>
 
@@ -79,7 +79,7 @@ const SubmitPage = () => {
             multiline
             rows={3}
             fullWidth
-            ref={messageRef}
+            inputRef={messageRef}
             />
           </span>
         </div>
@@ -95,10 +95,6 @@ const SubmitPage = () => {
 
       
       </div>
-
-
-
-
     </div>
   )
 }
