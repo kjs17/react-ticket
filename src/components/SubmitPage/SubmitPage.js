@@ -1,8 +1,9 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import './SubmitPage.css';
 import Navbar from '../Navbar/Navbar';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
+import { db } from '../../firebase'
 
 
 const SubmitPage = () => {
@@ -12,10 +13,14 @@ const SubmitPage = () => {
   const emailRef = useRef();
   const messageRef = useRef();
 
+  const [loader, setLoader] = useState(false);
+
   const formRef = useRef();
 
   function onSubmit(e) {
     e.preventDefault();
+    setLoader(true);
+
 
     const data = {
       name: nameRef.current.value,
@@ -25,6 +30,24 @@ const SubmitPage = () => {
     };
 
     console.log(data);
+
+    
+    db.collection("ticket")
+      .add({
+        name: nameRef.current.value,
+        contact: contactRef.current.value,
+        email: emailRef.current.value,
+        message: messageRef.current.value,
+      })
+      .then(() => {
+        setLoader(false);
+        alert("Your ticket has been submitted👍");
+      })
+      .catch((error) => {
+        alert(error.message);
+        setLoader(false);
+      });
+  
 
     formRef.current.reset();
 
@@ -85,7 +108,8 @@ const SubmitPage = () => {
         </div>
 
         <div className='btn_wrap'>
-          <Button variant="contained" className='submit_btn'
+          <Button variant="contained" className='submit_btn' 
+          style={{ opacity: loader ? "1" : "0.5" }}
           onClick={onSubmit}>
             SUBMIT
           </Button>
