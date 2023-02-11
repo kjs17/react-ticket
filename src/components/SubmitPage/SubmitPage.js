@@ -30,6 +30,7 @@ const SubmitPage = () => {
     };
 
     console.log(data);
+    
 
     
     db.collection("ticket")
@@ -109,7 +110,7 @@ const SubmitPage = () => {
 
         <div className='btn_wrap'>
           <Button variant="contained" className='submit_btn' 
-          style={{ opacity: loader ? "1" : "0.5" }}
+          style={{ opacity: loader ? "0.5" : "1" }}
           onClick={onSubmit}>
             SUBMIT
           </Button>

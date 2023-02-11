@@ -4,12 +4,14 @@ import "firebase/compat/firestore";
 
 const firebaseConfig = {
   // Your web app's Firebase configuration
-  apiKey: "AIzaSyC7SnuUcMDNiuTHUhdWODbn8Zj-LbLLpvg",
-  authDomain: "react-ticket-website.firebaseapp.com",
-  projectId: "react-ticket-website",
-  storageBucket: "react-ticket-website.appspot.com",
-  messagingSenderId: "740080051850",
-  appId: "1:740080051850:web:deef57ba0352281ec12f73"
+  apiKey: process.env.REACT_APP_API_KEY,
+  authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+  projectId: process.env.REACT_APP_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_MSG_SENDER_ID,
+  appId: process.env.REACT_APP_APP_ID,
+  measurementId: process.env.REACT_APP_MEASUREMENT_ID
+
 
 };
 
