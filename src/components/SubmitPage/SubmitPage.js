@@ -14,11 +14,28 @@ const SubmitPage = () => {
   const messageRef = useRef();
 
   const [loader, setLoader] = useState(false);
+  const [ticketNumber, setTicketNumber] = useState(null);
 
   const formRef = useRef();
+  const validateForm = () => {
+    const name = nameRef.current.value;
+    const contact = contactRef.current.value;
+    const email = emailRef.current.value;
+    const message = messageRef.current.value;
 
-  function onSubmit(e) {
+    if (!name || !contact || !email || !message) {
+      alert("All fields are required!");
+      return false;
+    }
+    return true;
+  };
+
+
+  const onSubmit = (e) => {
     e.preventDefault();
+    if (!validateForm()) {
+      return;
+    }
     setLoader(true);
 
 
@@ -30,9 +47,7 @@ const SubmitPage = () => {
     };
 
     console.log(data);
-    
 
-    
     db.collection("ticket")
       .add({
         name: nameRef.current.value,
@@ -40,9 +55,10 @@ const SubmitPage = () => {
         email: emailRef.current.value,
         message: messageRef.current.value,
       })
-      .then(() => {
+      .then((docRef) => {
         setLoader(false);
-        alert("Your ticket has been submitted👍");
+        setTicketNumber(docRef.id);
+        alert(`Your ticket has been submitted with ticket number: ${docRef.id} 👍`);
       })
       .catch((error) => {
         alert(error.message);
@@ -65,7 +81,7 @@ const SubmitPage = () => {
           
           <div className='field_wrap'>
             <span className='label_ticket'>Ticket Number:</span>
-            <span className='field_value'></span>
+            <span className='field_value'>{ticketNumber}</span>
           </div>
 
           <div className='field_wrap'>
